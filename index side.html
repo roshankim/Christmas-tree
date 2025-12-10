@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Festive Season - SGS Kenya</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #1a472a 0%, #2d5f3f 50%, #8b0000 100%);
+            overflow: hidden;
+            position: relative;
+        }
+
+        .snowflake {
+            position: absolute;
+            top: -10px;
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 1.5em;
+            animation: fall linear infinite;
+        }
+
+        @keyframes fall {
+            to {
+                transform: translateY(100vh) rotate(360deg);
+            }
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 90px;
+            padding: 20px 50px;
+            max-width: 300px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            text-align: right sidebar;
+            position:relative ;
+            border: 3px solid #d4af37;
+            animation: fadeIn 1s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .ornament {
+            position: absolute;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            animation: swing 3s ease-in-out infinite;
+        }
+
+        .ornament.top-left {
+            top: -20px;
+            left: 30px;
+            background: linear-gradient(135deg, #ff6b6b, #c92a2a);
+        }
+
+        .ornament.top-right {
+            top: -20px;
+            right: 30px;
+            background: linear-gradient(135deg, #ffd700, #d4af37);
+        }
+
+        @keyframes swing {
+            0%, 100% {
+                transform: rotate(-5deg);
+            }
+            50% {
+                transform: rotate(5deg);
+            }
+        }
+
+        h1 {
+            font-size: 2.5em;
+            color: #1a472a;
+            margin-bottom: 30px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .highlight {
+            color: #c92a2a;
+            font-weight: bold;
+        }
+
+        p {
+            font-size: 1.3em;
+            line-height: 1.8;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .star {
+            color: #ffd700;
+            font-size: 2em;
+            margin: 20px 0;
+            animation: twinkle 2s ease-in-out infinite;
+        }
+
+        @keyframes twinkle {
+            0%, 100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+            50% {
+                opacity: 0.5;
+                transform: scale(1.2);
+            }
+        }
+
+        .signature {
+            margin-top: 40px;
+            font-style: italic;
+            color: #555;
+            font-size: 1.1em;
+        }
+
+        .lights {
+            position: absolute;
+            top: 10px;
+            left: 0;
+            right: 0;
+            height: 20px;
+            display: flex;
+            justify-content: space-around;
+        }
+
+        .light {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            animation: blink 1.5s infinite;
+        }
+
+        .light:nth-child(1) {
+            background: #ff6b6b;
+            animation-delay: 0s;
+        }
+
+        .light:nth-child(2) {
+            background: #ffd700;
+            animation-delay: 0.3s;
+        }
+
+        .light:nth-child(3) {
+            background: #51cf66;
+            animation-delay: 0.6s;
+        }
+
+        .light:nth-child(4) {
+            background: #4dabf7;
+            animation-delay: 0.9s;
+        }
+
+        .light:nth-child(5) {
+            background: #ff6b6b;
+            animation-delay: 1.2s;
+        }
+
+        @keyframes blink {
+            0%, 100% {
+                opacity: 1;
+                box-shadow: 0 0 10px currentColor;
+            }
+            50% {
+                opacity: 0.3;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <div class="lights">
+            <div class="light"></div>
+            <div class="light"></div>
+            <div class="light"></div>
+            <div class="light"></div>
+            <div class="light"></div>
+        </div>
+        
+        <div class="ornament top-left"></div>
+        <div class="ornament top-right"></div>
+        
+        <h1>🎄 Happy Festive Season! 🎄</h1>
+        
+        <p>
+            To the amazing team at <span class="highlight">SGS Kenya</span>!
+        </p>
+        
+        <div class="star">✨ ⭐ ✨</div>
+        
+        <p>
+            Wishing you joy, laughter, and quality time with your loved ones.
+        </p>
+        
+        <p>
+            Thanks for being such an inspiring team—cheers to a fantastic year ahead!
+        </p>
+        
+        <div class="signature">
+            With warm wishes 🎁
+        </div>
+    </div>
+
+    <script>
+        // Create falling snowflakes
+        function createSnowflake() {
+            const snowflake = document.createElement('div');
+            snowflake.classList.add('snowflake');
+            snowflake.textContent = '❄';
+            snowflake.style.left = Math.random() * 100 + 'vw';
+            snowflake.style.animationDuration = Math.random() * 3 + 5 + 's';
+            snowflake.style.opacity = Math.random();
+            document.body.appendChild(snowflake);
+
+            setTimeout(() => {
+                snowflake.remove();
+            }, 8000);
+        }
+
+        setInterval(createSnowflake, 300);
+    </script>
+</body>
+</html>

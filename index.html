@@ -1,0 +1,285 @@
+<html>
+ <html lang="en">
+ <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D Christmas Tree</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-block-size: 100vh;
+            background: radial-gradient(circle at center, #0f1419 0%, #0313f3 100%);
+            perspective: 1200px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        body::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEYAAAAdCAYAAAAZR0pQAAAACXBIWXMAAAsTAAALEwEAmpwYAAAF8WlUWHRYTUw6Y29tLmFkb2JlLnhtcAAAAAAAPD94cGFja2V0IGJlZ2luPSLvu78iIGlkPSJXNU0wTXBDZWhpSHpyZVN6TlRjemtjOWQiPz4gPHg6eG1wbWV0YSB4bWxuczp4PSJhZG9iZTpuczptZXRhLyIgeDp4bXB0az0iQWRvYmUgWE1QIENvcmUgNy4xLWMwMDAgNzkuYjBmOGJlOSwgMjAyMS8xMi8xNS0yMTo1MjoyOSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczpkYz0iaHR0cDovL3B1cmwub3JnL2RjL2VsZW1lbnRzLzEuMS8iIHhtbG5zOnBob3Rvc2hvcD0iaHR0cDovL25zLmFkb2JlLmNvbS9waG90b3Nob3AvMS4wLyIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0RXZ0PSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VFdmVudCMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIDIzLjEgKFdpbmRvd3MpIiB4bXA6Q3JlYXRlRGF0ZT0iMjAyMy0xMi0wOFQxMDowMDowMCswMzowMCIgeG1wOk1vZGlmeURhdGU9IjIwMjMtMTItMDhUMTA6MDA6MDArMDM6MDAiIHhtcDpNZXRhZGF0YURhdGU9IjIwMjMtMTItMDhUMTA6MDA6MDArMDM6MDAiIGRjOmZvcm1hdD0iaW1hZ2UvcG5nIiBwaG90b3Nob3A6Q29sb3JNb2RlPSIzIiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOjEyMzQ1Njc4LTkwYWItY2RlZi0xMjM0LTU2Nzg5MGFiY2RlZiIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDoxMjM0NTY3OC05MGFiLWNkZWYtMTIzNC01Njc4OTBhYmNkZWYiIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDoxMjM0NTY3OC05MGFiLWNkZWYtMTIzNC01Njc4OTBhYmNkZWYiPiA8eG1wTU06SGlzdG9yeT4gPHJkZjpTZXE+IDxyZGY6bGkgc3RFdnQ6YWN0aW9uPSJjcmVhdGVkIiBzdEV2dDppbnN0YW5jZUlEPSJ4bXAuaWlkOjEyMzQ1Njc4LTkwYWItY2RlZi0xMjM0LTU2Nzg5MGFiY2RlZiIgc3RFdnQ6d2hlbj0iMjAyMy0xMi0wOFQxMDowMDowMCswMzowMCIgc3RFdnQ6c29mdHdhcmVBZ2VudD0iQWRvYmUgUGhvdG9zaG9wIDIzLjEgKFdpbmRvd3MpIi8+IDwvcmRmOlNlcT4gPC94bXBNTTpIaXN0b3J5PiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PgABCDAAAAOWSURBVFiFzZhNaBNBGIafTZrYpLZN0lRt2kqrVvFQQdGDBy/ixYMgCIIXf6DeROhFEEQQD4IgePAgCIIgCIIgCB4E8SB48CCoB0E8iD9VsVJttWn+mqbZbDYzHnY3u5tsskmT1gcWdmeY+Z5v5vuY2QVjDMYYhBCklBJCCCGEEEKYMcYYY4wxxhhjjDHGmH+MMcYYY4wxxhhjjDHGGGOMMcYYY/4nxhj+JUopVFXl7t27rFq1iszMTLKysti1axcPHjxACOFqvxA/EiEESimEEAghEEKglEIpxYIFC8jJySE3N5fFixezePFi8vPzWbt2LQ8fPkQIgVIKpRRKKZRSKKVQSqGUQimFUgqlFP8CpRRKKYQQKKUQQqCUQgiBEAKlFEIIdu7cyaJFi1i6dCnLli1j7ty5LF++nM2bN/P06VOklEgpkVKilEIpRSrHvxT+Uikl+/fvZ8WKFeTn51NQUEBhYSHFxcVs2LCBFy9esGXLFpYvX05JSQmlpaXU1tayZcsWnnp1wv6OJ+aruP4pT548Yfv27axZs4a6ujoaGhpobGykpaWF9vZ2fvz4Qb/fz8DAACMjI4yNjTE+Ps7ExAQTExP4fL4pMdMl/qUwxqCU4vLly+zYsYOOjg56enpobW2lra0Nv99Pf38/w8PDjI6OMj4+ztjYGBMTE0xMTDA5OYnf708RM13id4UxBqUUly5d4tChQ3R2dvL9+3f6+vro7u6ms7OTwcFBhoeHGRkZYXR0lLGxMSYmJvD7/UxOTuL3+5mcnMTv9xMIBKbEpEr8jjDGIKXk/PnzHDlyhPb2djo6Ovj27RvNzc20tLQwMDDAyMgIo6OjjI+P4/f7CQQChEIhgsEgk5OTBAIBQqEQoVCIUChEKBSa4s+E+B1hjEFKyfnz5zly5Ajt7e10dHQwNDRET08Pvb29DA4OMjIywtjYGH6/n0AgQCgUIhgMMjk5SSAQIBQKEQqFCAaDhEIhQqFQwp8p8TvCGIOUknPnznH8+HE6Ozv5+vUrLS0t9PT0MDAwwPDwMGNjY0xMTBAIBAgGgwSDQYLBIOFwmGAwiN/vJxQKEQgECAaDhEIhgsEgoVAo4c+U+F1hjEFKydmzZzlx4gTd3d18+fKFpqYment76e/vZ3h4mNHRUSYmJvD7/YRCIYLBIOFwGL/fj9/vx+/34/f78fv9BAIBAoEAgUCAQCBAIBDgb4kpiiKqqqoxxhAMBjl69ChXrlyhvb2djo4OfD4fPT09DA0NMTo6yt+QUkopEEJgjEFKiRACY8yfSCmRUiKlREqJlBIpJVJKpJRIKZFSIqVESimklEgpkVIi/wOfAe2gN3q3AAAAAElFTkSuQmCC');
+            background-repeat: no-repeat;
+            background-position: center 5vh;
+            background-size: 150px auto;
+            opacity: 0.3;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .tree {
+            position: relative;
+            block-size: 70vmin;
+            inline-size: 40vmin;
+            transform-style: preserve-3d;
+            animation: spin 12s infinite linear;
+        }
+
+        .tree__trunk {
+            position: absolute;
+            inset-block-end: 0;
+            inset-inline-start: 10%;
+            transform: translateX(-50%);
+            inline-size: 3vmin;
+            block-size: 0vmin;
+            background: linear-gradient(to top, #4a3526, #6b4d3a);
+            border-radius: 1vmin;
+        }
+
+        .tree__branch {
+            position: absolute;
+            inset-block-end: 0;
+            inset-inline-start: 50%;
+            inline-size: 0;
+            block-size: 0;
+            border-inline-start: var(--size) solid transparent;
+            border-inline-end: var(--size) solid transparent;
+            border-block-end: calc(var(--size) * 1.5) solid #65f306;
+            transform-style: preserve-3d;
+            transform: translateX(-50%) translateY(calc(var(--y) * 1vmin)) rotateY(calc(var(--rotate) * 1deg));
+            filter: brightness(var(--brightness, 1));
+        }
+
+        .tree__star {
+            position: absolute;
+            inset-block-start: -5vmin;
+            inset-inline-start: 50%;
+            transform: translateX(-50%);
+            inline-size: 10vmin;
+            block-size: 10vmin;
+            background: linear-gradient(45deg, #ffd700, #ffed4e);
+            clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+            box-shadow: 0 0 20px #ffd700, 0 0 40px #ffd700;
+            animation: starPulse 2s infinite ease-in-out;
+        }
+
+        .tree__light {
+            transform-style: preserve-3d;
+            position: absolute;
+            block-size: 2.5vmin;
+            inline-size: 1.5vmin;
+            border-radius: 50%;
+            transform: translate(-50%, 50%) rotateY(calc(var(--rotate, 0) * 1deg));
+            inset-block-end: calc(var(--y, 0) * 1%);
+            inset-inline-start: 50%;
+            box-shadow: 0 0 15px currentColor, 0 0 30px currentColor, 0 0 45px currentColor;
+            animation: twinkle 2s infinite ease-in-out;
+            animation-delay: calc(var(--delay, 0) * 0.1s);
+        }
+
+        .snowflake {
+            position: absolute;
+            color: white;
+            font-size: 3.5vmin;
+            opacity: 1.8;
+            animation: fall linear infinite;
+            animation-duration: calc(var(--duration) * 1s);
+            animation-delay: calc(var(--delay) * 1s);
+            inset-inline-start: calc(var(--x) * 1vw);
+            inset-block-start: -5vmin;
+        }
+
+        .message {
+            position: absolute;
+            inset-block-end: 10vh;
+            inset-inline-start: 50%;
+            transform: translateX(-50%);
+            text-align: center;
+            color: #f2f5ef;
+            font-family: 'Georgia', serif;
+            text-shadow: 0 0 10px rgba(255, 215, 0, 0.8), 0 0 20px rgba(255, 215, 0, 0.6);
+            animation: messageGlow 3s infinite ease-in-out;
+            z-index: 10;
+          }
+        .message h1 {
+            margin: 5.5rem 0;
+            font-size: 10vmin;
+            font-weight: bold;
+        }
+
+        .message .jamhuri {
+            color: #ff0000;
+        }
+
+        .message .christmas {
+            color: #00ff00;
+        }
+
+        .message .newyear {
+            color: #ffd700;
+        }
+
+        @keyframes spin {
+            from { transform: rotateY(0deg); }
+            to { transform: rotateY(360deg); }
+        }
+
+        @keyframes twinkle {
+            0%, 100% {
+                opacity: 1;
+                transform: translate(-50%, 50%) rotateY(calc(var(--rotate, 0) * 1deg)) scale(1);
+            }
+            50% {
+                opacity: 0.3;
+                transform: translate(-50%, 50%) rotateY(calc(var(--rotate, 0) * 1deg)) scale(0.7);
+            }
+        }
+
+        @keyframes starPulse {
+            0%, 100% {
+                transform: translateX(-50%) scale(1);
+                filter: brightness(1);
+            }
+            50% {
+                transform: translateX(-50%) scale(1.2);
+                filter: brightness(1.5);
+            }
+        }
+
+        @keyframes fall {
+            to {
+                transform: translateY(110vh) rotate(360deg);
+            }
+        }
+
+        @keyframes messageGlow {
+            0%, 100% {
+                text-shadow: 0 0 10px rgba(255, 215, 0, 0.8), 0 0 20px rgba(255, 215, 0, 0.6);
+            }
+            50% {
+                text-shadow: 0 0 20px rgba(255, 215, 0, 1), 0 0 40px rgba(255, 215, 0, 0.8), 0 0 60px rgba(255, 215, 0, 0.6);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="tree" id="tree">
+        <div class="tree__star"></div>
+    </div>
+
+    <div class="sidebar left content">
+        <p>Left Sidebar Content</p>
+    </div>
+
+    <div class="message">
+        <h1 class="jamhuri">Happy Jamhuri Day</h1>
+        <h1 class="christmas">Merry Christmas</h1>
+        <h2 class="and">And</h2>
+        <h1 class="newyear">A Happy New Year</h1>
+    </div>
+
+    <div class= "sidebar right content">
+        <p>Right Sidebar Content</p>
+    </div>
+
+    <style>
+        .sidebar {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 20%;
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            z-index: 5;
+        }
+
+        .sidebar.left {
+            left: 0;
+        }
+
+        .sidebar.right {
+            right: 0;
+        }
+
+        .message {
+            z-index: 10; /* Ensure message is above sidebars */
+        }
+    </style>
+
+    <script>
+        const tree = document.getElementById('tree');
+        const colors = ['#ff0000', '#00ff00', '#0000ff', '#ffff00', '#ff00ff', '#00ffff', '#ff8800', '#ffffff'];
+        
+        // Create tree trunk
+        const trunk = document.createElement('div');
+        trunk.className = 'tree__trunk';
+        tree.appendChild(trunk);
+        
+        // Create layered branches (spiral effect)
+        const layers = 12;
+        for (let i = 0; i < layers; i++) {
+            const branchesPerLayer = 8;
+            for (let j = 0; j < branchesPerLayer; j++) {
+                const branch = document.createElement('div');
+               branch.className = 'tree__branch';
+                
+                const size = (12 - i) * 1.5;
+                const yPos = 8 + (i * 3.5);
+                const rotation = (j * (360 / branchesPerLayer)) + (i * 15);
+                const brightness = 0.7 + (Math.random() * 0.3);
+                
+                branch.style.setProperty('--size', size + 'vmin');
+                branch.style.setProperty('--y', yPos);
+                branch.style.setProperty('--rotate', rotation);
+                branch.style.setProperty('--brightness', brightness);
+                
+                tree.appendChild(branch);
+            }
+        }
+        
+        // Create spiral lights
+        for (let i = 0; i < 80; i++) {
+            const light = document.createElement('div');
+            light.className = 'tree__light';
+            
+            const rotate = (i * 30) % 360;
+            const y = 15 + ((i / 80) * 80);
+            const color = colors[Math.floor(Math.random() * colors.length)];
+            
+            light.style.setProperty('--rotate', rotate);
+            light.style.setProperty('--y', y);
+            light.style.setProperty('--delay', i % 10);
+            light.style.backgroundColor = color;
+            light.style.color = color;
+            
+            tree.appendChild(light);
+        }
+
+        // Create snowflakes
+        for (let i = 0; i < 30; i++) {
+            const snowflake = document.createElement('div');
+            snowflake.className = 'snowflake';
+            snowflake.textContent = '❄';
+            snowflake.style.setProperty('--x', Math.random() * 100);
+            snowflake.style.setProperty('--duration', 8 + Math.random() * 8);
+            snowflake.style.setProperty('--delay', Math.random() * 5);
+            document.body.appendChild(snowflake);
+        }
+    </script>
+</body>
+</html>
