@@ -11,7 +11,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            min-block-size: 100vh;
+            min-height: 100vh;
             background: radial-gradient(circle at center, #0f1419 0%, #0313f3 100%);
             perspective: 1200px;
             overflow: hidden;
@@ -29,32 +29,32 @@
 
         .tree {
             position: relative;
-            block-size: 70vmin;
-            inline-size: 40vmin;
+            height: 70vmin;
+            width: 40vmin;
             transform-style: preserve-3d;
             animation: spin 12s infinite linear;
         }
 
         .tree__trunk {
             position: absolute;
-            inset-block-end: 0;
-            inset-inline-start: 10%;
+            bottom: 0;
+            left: 50%;
             transform: translateX(-50%);
-            inline-size: 3vmin;
-            block-size: 0vmin;
+            width: 3vmin;
+            height: 12vmin;
             background: linear-gradient(to top, #4a3526, #6b4d3a);
             border-radius: 1vmin;
         }
 
         .tree__branch {
             position: absolute;
-            inset-block-end: 0;
-            inset-inline-start: 50%;
-            inline-size: 0;
-            block-size: 0;
-            border-inline-start: var(--size) solid transparent;
-            border-inline-end: var(--size) solid transparent;
-            border-block-end: calc(var(--size) * 1.5) solid #65f306;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-left: var(--size) solid transparent;
+            border-right: var(--size) solid transparent;
+            border-bottom: calc(var(--size) * 1.5) solid #65f306;
             transform-style: preserve-3d;
             transform: translateX(-50%) translateY(calc(var(--y) * 1vmin)) rotateY(calc(var(--rotate) * 1deg));
             filter: brightness(var(--brightness, 1));
@@ -62,11 +62,11 @@
 
         .tree__star {
             position: absolute;
-            inset-block-start: -5vmin;
-            inset-inline-start: 50%;
+            top: -5vmin;
+            left: 50%;
             transform: translateX(-50%);
-            inline-size: 10vmin;
-            block-size: 10vmin;
+            width: 10vmin;
+            height: 10vmin;
             background: linear-gradient(45deg, #ffd700, #ffed4e);
             clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
             box-shadow: 0 0 20px #ffd700, 0 0 40px #ffd700;
@@ -76,12 +76,12 @@
         .tree__light {
             transform-style: preserve-3d;
             position: absolute;
-            block-size: 2.5vmin;
-            inline-size: 1.5vmin;
+            height: 2.5vmin;
+            width: 1.5vmin;
             border-radius: 50%;
             transform: translate(-50%, 50%) rotateY(calc(var(--rotate, 0) * 1deg));
-            inset-block-end: calc(var(--y, 0) * 1%);
-            inset-inline-start: 50%;
+            bottom: calc(var(--y, 0) * 1%);
+            left: 50%;
             box-shadow: 0 0 15px currentColor, 0 0 30px currentColor, 0 0 45px currentColor;
             animation: twinkle 2s infinite ease-in-out;
             animation-delay: calc(var(--delay, 0) * 0.1s);
@@ -95,8 +95,8 @@
             animation: fall linear infinite;
             animation-duration: calc(var(--duration) * 1s);
             animation-delay: calc(var(--delay) * 1s);
-            inset-inline-start: calc(var(--x) * 1vw);
-            inset-block-start: -5vmin;
+            left: calc(var(--x) * 1vw);
+            top: -5vmin;
         }
 
         .message {
@@ -262,7 +262,7 @@
             object-fit: cover;
             border-radius: 90px;
             box-shadow: 0 8px 18px rgba(58, 39, 39, 0.18);
-            transition: transform 150ms ease-in-out, box-shadow 150ms ease-in-out;
+            transition: transform 15ms ease, box-shadow 150ms ease;
             cursor: pointer;
         }
 
@@ -389,6 +389,8 @@
                 <div class="light"></div>
                 <div class="light"></div>
                 <div class="light"></div>
+                <div class="light"></div>
+                <div class="light"></div>
             </div>
             
             <div class="ornament top-left"></div>
@@ -425,12 +427,12 @@
 
     <div class="sidebar right content">
         <div class="gallery-right">
-            <img src="image1.jpg" alt="Photo 1">
-            <img src="image2.jpg" alt="Photo 2">
-            <img src="image3.jpg" alt="Photo 3">
-            <img src="image4.jpg" alt="Photo 4">
-            <img src="image5.jpg" alt="Photo 5">
-            <img src="image6.jpg" alt="Photo 6">
+              <img src="image1.jpg" alt="Photo 1">
+              <img src="image2.jpg" alt="Photo 2">
+              <img src="image3.jpg" alt="Photo 3">
+              <img src="image4.jpg" alt="Photo 4">
+              <img src="image5.jpg" alt="Photo 5">
+              <img src="image6.jpg" alt="Photo 6">
               <img src="image7.jpg" alt="Photo 7">
               <img src="image8.jpg" alt="Photo 8">
         </div>
